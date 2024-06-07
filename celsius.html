@@ -2,44 +2,58 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Temperaturumrechnung</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rechner</title>
+  
 </head>
 <body>
-    <h1>Temperaturumrechnung</h1>
-    
-    <h2>Celsius zu Kelvin</h2>
-    <input type="number" id="celsiusInput" placeholder="Grad Celsius">
-    <button onclick="convertCelsiusToKelvin()">Umwandeln</button>
-    <p id="kelvinResult"></p>
-    
-    <h2>Kelvin zu Celsius</h2>
-    <input type="number" id="kelvinInput" placeholder="Kelvin">
-    <button onclick="convertKelvinToCelsius()">Umwandeln</button>
-    <p id="celsiusResult"></p>
-    
+    <div class="container">
+        <h1>Rechner</h1>
+        <label for="num1">Erste Zahl:</label>
+        <input type="number" id="num1" placeholder="Erste Zahl eingeben">
+        <label for="num2">Zweite Zahl:</label>
+        <input type="number" id="num2" placeholder="Zweite Zahl eingeben">
+        <input type="button" value="Addition" onclick="add()">
+        <input type="button" value="Subtraktion" onclick="subtract()">
+        <input type="button" value="Multiplikation" onclick="multiply()">
+        <input type="button" value="Division" onclick="divide()">
+        <input type="button" value="Potenzieren" onclick="power()">
+        <p id="result"></p>
+    </div>
+
     <script>
-        // Funktion zur Umwandlung von Celsius in Kelvin
-        function celsiusToKelvin(celsius) {
-            return celsius + 273.15;
+        function add() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerText = `Ergebnis: ${num1 + num2}`;
         }
 
-        // Funktion zur Umwandlung von Kelvin in Celsius
-        function kelvinToCelsius(kelvin) {
-            return kelvin - 273.15;
+        function subtract() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerText = `Ergebnis: ${num1 - num2}`;
         }
 
-        // Funktion zur Umwandlung von Celsius zu Kelvin und Anzeige des Ergebnisses
-        function convertCelsiusToKelvin() {
-            let celsius = parseFloat(document.getElementById('celsiusInput').value);
-            let kelvin = celsiusToKelvin(celsius);
-            document.getElementById('kelvinResult').innerText = `${celsius} Grad Celsius sind ${kelvin} Kelvin`;
+        function multiply() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerText = `Ergebnis: ${num1 * num2}`;
         }
 
-        // Funktion zur Umwandlung von Kelvin zu Celsius und Anzeige des Ergebnisses
-        function convertKelvinToCelsius() {
-            let kelvin = parseFloat(document.getElementById('kelvinInput').value);
-            let celsius = kelvinToCelsius(kelvin);
-            document.getElementById('celsiusResult').innerText = `${kelvin} Kelvin sind ${celsius} Grad Celsius`;
+        function divide() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            if (num2 !== 0) {
+                document.getElementById('result').innerText = `Ergebnis: ${num1 / num2}`;
+            } else {
+                document.getElementById('result').innerText = "Fehler: Division durch Null!";
+            }
+        }
+
+        function power() {
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('result').innerText = `Ergebnis: ${Math.pow(num1, num2)}`;
         }
     </script>
 </body>
